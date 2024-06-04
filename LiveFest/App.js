@@ -2,6 +2,12 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
 import { Home } from "./src/screens/Home/Home";
 import { SplashScreen } from "./src/screens/Splash/Splash";
+import { Login } from "./src/screens/Login/Login";
+import { Navigation } from "./src/screens/Navigation/Navigation";
+import { StatusBar } from 'expo-status-bar';
+
+
+
 
 // Importe das Fontes
 import {
@@ -16,8 +22,6 @@ import {
   Raleway_600SemiBold,
   Raleway_700Bold,
 } from "@expo-google-fonts/raleway";
-import { Login } from "./src/screens/Login/Login";
-import { Navigation } from "./src/screens/Navigation/Navigation";
 
 
 const Stack = createNativeStackNavigator();
@@ -38,6 +42,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
+     <StatusBar/>
      <Stack.Navigator 
       initialRouteName="SplashScreen" // Define a tela inicial do navegador de pilha.
       screenOptions={{ headerShown: false }} // Oculta o cabeçalho padrão de todas as telas dentro do navegador de pilha.
@@ -65,3 +70,5 @@ export default function App() {
     </NavigationContainer>
   );
 }
+
+

@@ -1,16 +1,17 @@
-import { Button, ButtonTitle, Container, ContentAccount, Input, LinkBold, LinkMedium, Logo, TextContentAccount, Title } from "./Styles";
 
+
+import { Button, ButtonTitle, Container, ContentAccount, Input, LinkBold, LinkMedium, Logo, TextContentAccount, Title } from '../../screens/Login/Styles';
 
 
 export const Login = () => {
 
     return (
-
+      
         <Container>
-
-        <Logo source={require("../../../assets/TicketLiveFest.png")} />
-
+         
             <Title>Acessar Conta</Title>
+
+            <Logo source={require("../../../src/assets/VitalHub_Logo.png")} />
 
             <Input
                 placeholder="E-mail"
@@ -35,7 +36,7 @@ export const Login = () => {
                     Não tem conta? 
                     <LinkBold>  Crie uma conta agora!</LinkBold>
                 </TextContentAccount>
-            </ContentAccount>
+            </ContentAccount>  
 
         </Container>
 
