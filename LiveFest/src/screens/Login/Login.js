@@ -11,7 +11,7 @@ export const Login = () => {
          
             <Title>Acessar Conta</Title>
 
-            <Logo source={require("../../../src/assets/VitalHub_Logo.png")} />
+            <Logo source={require("../../../src/assets/logo.png")} />
 
             <Input
                 placeholder="E-mail"
@@ -26,6 +26,7 @@ export const Login = () => {
             <LinkMedium>Esqueceu sua senha ?</LinkMedium>
 
             <Button>
+                
                 <ButtonTitle>
                     Entrar
                 </ButtonTitle>
@@ -33,8 +34,8 @@ export const Login = () => {
 
             <ContentAccount>
                 <TextContentAccount>
-                    Não tem conta? 
-                    <LinkBold>  Crie uma conta agora!</LinkBold>
+                    Não tem uma conta? 
+                    <LinkBold>  Cadastre-se</LinkBold>
                 </TextContentAccount>
             </ContentAccount>  
 
