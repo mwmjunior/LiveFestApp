@@ -6,13 +6,39 @@ export const Container = styled.SafeAreaView`
   background-color: #F7F8FA;
 `;
 
+// Contêiner para o campo de entrada com ícone
+export const InputContainer = styled.View`
+    width: 90%;
+    height: 80px;
+    flex-direction: row;
+    align-items: center;
+    border: 1px solid rgba(0, 0, 0, 0.0935);
+    margin-top: 22px;
+    padding-left: 16px;
+    background-color: #FFF; /* Adicionando fundo branco */
+`;
+
+// Contêiner para o ícone
+export const IconWrapper = styled.View`
+    padding-right: 10px;
+`;
+
+// Campo de entrada estilizado
+export const StyledInput = styled.TextInput.attrs({
+  placeholderTextColor: '#333333'
+})`
+    flex: 1;
+    height: 100%;
+    font-size: 16px;
+    font-family: 'MontserratAlternates_600SemiBold';
+`;
+
 export const Logo = styled.Image`
   width: 214px;
   height: 120px;
   align-self: center;
   margin: 50px 0px; /* Aumentando a margem superior para descer a logo para baixo */
 
-  
 `;
 
 export const Title = styled.Text`
@@ -23,17 +49,6 @@ export const Title = styled.Text`
   font-family: MontserratAlternates_600SemiBold;
 `;
 
-export const Input = styled.TextInput.attrs({
-  placeholderTextColor: '#333333'
-})`
-  width: 90%;
-  height: 80px;
-  padding: 16px;
-  margin-top: 22px;
-  border: 1px solid rgba(0, 0, 0, 0.0935);
-  font-size: 16px;
-  font-family: 'MontserratAlternates_600SemiBold';
-`;
 
 export const LinkMedium = styled.Text`
   font-size: 14px;
