@@ -1,33 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { TouchableOpacity } from 'react-native';
 import EmailIcon from '../../components/Icons/Email';
-import { Button, ButtonTitle, Container, ContentAccount, IconWrapper, Input, InputContainer, LinkBold, LinkMedium, Logo, StyledInput, TextContentAccount, Title } from '../../screens/Login/Styles';
 import PasswordIcon from '../../components/Icons/Password';
-
-
-
+import ShowIcon from '../../components/Icons/Show';
+import HideIcon from '../../components/Icons/Hide';
+import { Button, ButtonTitle, Container, ContentAccount, IconWrapper, Input, LinkBold, LinkMedium, Logo, StyledInput, TextContentAccount, Title, PasswordInputContainer, ShowHideButton } from '../../screens/Login/Styles';
 
 export const Login = () => {
+    const [isSecureEntry, setIsSecureEntry] = useState(true);
+
     return (
         <Container>
             <Title>Acessar Conta</Title>
 
             <Logo source={require("../../../src/assets/logo.png")} />
 
-            <InputContainer>
+            <Input>
                 <IconWrapper>
                     <EmailIcon color={"#4090FE"} size={17} />
                 </IconWrapper>
                 <StyledInput placeholder="E-mail" />
-            </InputContainer>
+            </Input>
 
-            <InputContainer>
+            <Input>
                 <IconWrapper>
                     <PasswordIcon color={"#4090FE"} size={20} />
                 </IconWrapper>
-                <StyledInput placeholder="Senha" secureTextEntry  />
-            </InputContainer>
+                <PasswordInputContainer>
+                    <StyledInput 
+                        placeholder="Senha" 
+                        secureTextEntry={isSecureEntry}
+                    />
+                    <TouchableOpacity
+                        onPress={() => setIsSecureEntry((prev) => !prev)}
+                    >
+                        {isSecureEntry ? <HideIcon color={"#3E3E40"} size={23} /> : <ShowIcon color={"#3E3E40"} size={23} />}
+                    </TouchableOpacity>
+                </PasswordInputContainer>
+            </Input>
             
-            <LinkMedium>Esqueceu sua senha ?</LinkMedium>
+            <LinkMedium>Esqueceu sua senha?</LinkMedium>
 
             <Button>
                 <ButtonTitle>Entrar</ButtonTitle>
@@ -41,4 +53,4 @@ export const Login = () => {
             </ContentAccount>
         </Container>
     );
-}
+};

@@ -1,3 +1,4 @@
+
 import styled from "styled-components";
 
 export const Container = styled.SafeAreaView`
@@ -7,38 +8,37 @@ export const Container = styled.SafeAreaView`
 `;
 
 // Contêiner para o campo de entrada com ícone
-export const InputContainer = styled.View`
-    width: 90%;
-    height: 80px;
-    flex-direction: row;
-    align-items: center;
-    border: 1px solid rgba(0, 0, 0, 0.0935);
-    margin-top: 22px;
-    padding-left: 16px;
-    background-color: #FFF; /* Adicionando fundo branco */
+export const Input = styled.View`
+  width: 90%;
+  height: 80px;
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.0935);
+  margin-top: 22px;
+  padding-left: 16px;
+  background-color: #FFF;
 `;
 
 // Contêiner para o ícone
 export const IconWrapper = styled.View`
-    padding-right: 10px;
+  padding-right: 10px;
 `;
 
 // Campo de entrada estilizado
 export const StyledInput = styled.TextInput.attrs({
   placeholderTextColor: '#333333'
 })`
-    flex: 1;
-    height: 100%;
-    font-size: 16px;
-    font-family: 'MontserratAlternates_600SemiBold';
+  flex: 1;
+  height: 100%;
+  font-size: 16px;
+  font-family: 'MontserratAlternates_600SemiBold';
 `;
 
 export const Logo = styled.Image`
   width: 214px;
   height: 120px;
   align-self: center;
-  margin: 50px 0px; /* Aumentando a margem superior para descer a logo para baixo */
-
+  margin: 50px 0px;
 `;
 
 export const Title = styled.Text`
@@ -48,7 +48,6 @@ export const Title = styled.Text`
   color: #33303E;
   font-family: MontserratAlternates_600SemiBold;
 `;
-
 
 export const LinkMedium = styled.Text`
   font-size: 14px;
@@ -71,7 +70,7 @@ export const Button = styled.TouchableOpacity`
   border-radius: 5px;
   border: 1px solid #4090FE;
   margin-top: 40px;
-  padding: 12px 8px 12px 8px;
+  padding: 12px 8px;
   align-items: center;
   justify-content: center;
 `;
@@ -97,3 +96,16 @@ export const TextContentAccount = styled.Text`
   font-family: 'MontserratAlternates_600SemiBold';
   color: #BCBDBE;
 `;
+
+// Adicionando novos componentes estilizados
+
+export const PasswordInputContainer = styled.View`
+  flex: 1;
+  flex-direction: row;
+  margin-right: 30px; 
+`;
+
+
+
+
+
