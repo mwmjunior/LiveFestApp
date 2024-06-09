@@ -6,8 +6,12 @@ import ShowIcon from '../../components/Icons/Show';
 import HideIcon from '../../components/Icons/Hide';
 import { Button, ButtonTitle, Container, ContentAccount, IconWrapper, Input, LinkBold, LinkMedium, Logo, StyledInput, TextContentAccount, Title, PasswordInputContainer, ShowHideButton } from '../../screens/Login/Styles';
 
-export const Login = () => {
+export const Login = ({ navigation }) => {
     const [isSecureEntry, setIsSecureEntry] = useState(true);
+
+    async function  RedirectRegister() {
+        navigation.replace("CreateAccount")
+    }
 
     return (
         <Container>
@@ -48,7 +52,7 @@ export const Login = () => {
             <ContentAccount>
                 <TextContentAccount>
                     Não tem uma conta?
-                    <LinkBold> Cadastre-se</LinkBold>
+                    <LinkBold onPress={RedirectRegister}> Cadastre-se</LinkBold>
                 </TextContentAccount>
             </ContentAccount>
         </Container>

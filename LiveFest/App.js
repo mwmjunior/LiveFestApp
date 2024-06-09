@@ -22,6 +22,7 @@ import {
   Raleway_600SemiBold,
   Raleway_700Bold,
 } from "@expo-google-fonts/raleway";
+import { CreateAccount, Register } from "./src/screens/CreateAccount/CreateAccount";
 
 
 const Stack = createNativeStackNavigator();
@@ -65,6 +66,14 @@ export default function App() {
           component={Login}
           //titulo da tela
           options={{title: 'Login'}}
+        />
+         <Stack.Screen
+          //Login
+          name='CreateAccount'
+          //componente que sera chamado
+          component={CreateAccount}
+          //titulo da tela
+          options={{title: 'CreateAccount'}}
         />
       </Stack.Navigator>
     </NavigationContainer>
