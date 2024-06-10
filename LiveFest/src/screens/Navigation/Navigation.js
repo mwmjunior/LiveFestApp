@@ -21,6 +21,22 @@ return(
             ("RegistrationSuccessful")}
         />
         
+        <Button
+            title="PasswordRecover"
+            onPress={() => navigation.navigate
+            ("PasswordRecover")}
+        />
+        <Button
+            title="EmailVerification"
+            onPress={() => navigation.navigate
+            ("EmailVerification")}
+        />
+        <Button
+            title="PasswordResetSuccessful"
+            onPress={() => navigation.navigate
+            ("PasswordResetSuccessful")}
+        />
+        
     </View>
 
 

@@ -24,6 +24,9 @@ import {
 } from "@expo-google-fonts/raleway";
 import { CreateAccount, Register } from "./src/screens/CreateAccount/CreateAccount";
 import { RegistrationSuccessful } from "./src/screens/RegistrationSuccessful/RegistrationSuccessful";
+import { PasswordRecover } from "./src/screens/PasswordRecover/PasswordRecover";
+import { EmailVerification } from "./src/screens/EmailVerification/EmailVerification";
+import { PasswordResetSuccessful } from "./src/screens/PasswordResetSuccessful/PasswordResetSuccessful";
 
 
 const Stack = createNativeStackNavigator();
@@ -83,6 +86,30 @@ export default function App() {
           component={RegistrationSuccessful}
           //titulo da tela
           options={{title: 'RegistrationSuccessful'}}
+        />
+         <Stack.Screen
+          //RegistrationSuccessful
+          name='PasswordRecover'
+          //componente que sera chamado
+          component={PasswordRecover}
+          //titulo da tela
+          options={{title: 'PasswordRecover'}}
+        />
+         <Stack.Screen
+          //RegistrationSuccessful
+          name='EmailVerification'
+          //componente que sera chamado
+          component={EmailVerification}
+          //titulo da tela
+          options={{title: 'EmailVerification'}}
+        />
+         <Stack.Screen
+          //RegistrationSuccessful
+          name='PasswordResetSuccessful'
+          //componente que sera chamado
+          component={PasswordResetSuccessful}
+          //titulo da tela
+          options={{title: 'PasswordResetSuccessful'}}
         />
       </Stack.Navigator>
     </NavigationContainer>
