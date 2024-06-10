@@ -15,6 +15,11 @@ return(
             onPress={() => navigation.navigate
             ("CreateAccount")}
         />
+        <Button
+            title="RegistrationSuccessful"
+            onPress={() => navigation.navigate
+            ("RegistrationSuccessful")}
+        />
         
     </View>
 

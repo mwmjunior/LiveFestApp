@@ -5,6 +5,7 @@ import PasswordIcon from '../../components/Icons/Password';
 import ShowIcon from '../../components/Icons/Show';
 import HideIcon from '../../components/Icons/Hide';
 import { Button, ButtonTitle, Container, ContentAccount, IconWrapper, Input, LinkBold, LinkMedium, Logo, StyledInput, TextContentAccount, Title, PasswordInputContainer, ShowHideButton } from '../../screens/Login/Styles';
+import ConfirmationIcon from '../../components/Icons/Confirmation';
 
 export const Login = ({ navigation }) => {
     const [isSecureEntry, setIsSecureEntry] = useState(true);

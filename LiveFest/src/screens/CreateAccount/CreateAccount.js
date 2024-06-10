@@ -1,85 +1,94 @@
+// Importações necessárias para o componente e estilização
 import React, { useState } from 'react';
 import { Button, ButtonTitle, Container, ContentAccount, Input, Label, LinkBold, StyledInput, TextContentAccount, Title } from './Styles';
 
+// Definição do componente de criação de conta
 export const CreateAccount = ({ navigation }) => {
+    // Estados para armazenar os valores dos campos de input
     const [input, setInput] = useState({
-        name: '',
-        email: '',
-        cpf: '',
-        password: '',
-        passwordConfirm: ''
+        name: '',             // Nome completo do usuário
+        email: '',            // Email do usuário
+        cpf: '',              // CPF do usuário
+        password: '',         // Senha do usuário
+        passwordConfirm: ''   // Confirmação de senha
     });
 
+    // Estados para armazenar mensagens de erro para cada campo
     const [error, setError] = useState({
-        name: '',
-        email: '',
-        cpf: '',
-        password: '',
-        passwordConfirm: ''
+        name: '',             // Erro no campo de nome
+        email: '',            // Erro no campo de email
+        cpf: '',              // Erro no campo de CPF
+        password: '',         // Erro no campo de senha
+        passwordConfirm: ''   // Erro na confirmação de senha
     });
 
+    // Estado para verificar se o CPF é válido
+    const [cpfValid, setCpfValid] = useState(true);
+
+    // Estado para verificar se o CPF está completo (com a formatação correta)
+    const [cpfInputComplete, setCpfInputComplete] = useState(false);
+
+    // Função para redirecionar para a tela de login
     async function RedirectToSignUp() {
-        navigation.replace("Login")
+        navigation.replace("Login");
     }
 
-    const [cpfValid, setCpfValid] = useState(true); // Inicialmente, o CPF é válido
-    const [cpfInputComplete, setCpfInputComplete] = useState(false); // Inicialmente, o input do CPF não está completo
-
+    // Função para atualizar o estado de input ao alterar os valores dos campos
     const onInputChange = (name, value) => {
         setInput(prev => ({
             ...prev,
             [name]: value
         }));
-        validateInput(name, value);
-    }
+    };
 
+    // Função de validação para os inputs
     const validateInput = (name, value) => {
         setError(prev => {
-            const stateObj = { ...prev, [name]: "" };
+            const stateObj = { ...prev, [name]: "" }; // Inicializa um objeto de erro para o campo
 
             switch (name) {
                 case "name":
                     if (!value) {
-                        stateObj[name] = "Por favor, digite seu nome.";
+                        stateObj[name] = "Por favor, digite seu nome."; // Verifica se o nome está vazio
                     } else if (value.length < 3) {
-                        stateObj[name] = "O nome deve ter pelo menos 3 caracteres.";
+                        stateObj[name] = "O nome deve ter pelo menos 3 caracteres."; // Verifica se o nome tem pelo menos 3 caracteres
                     }
                     break;
 
                 case "email":
-                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Regex para validar formato de email
                     if (!value) {
-                        stateObj[name] = "Por favor, digite seu email.";
+                        stateObj[name] = "Por favor, digite seu email."; // Verifica se o email está vazio
                     } else if (!emailRegex.test(value)) {
-                        stateObj[name] = "Email inválido.";
+                        stateObj[name] = "Email inválido."; // Verifica se o email está no formato correto
                     }
                     break;
 
                 case "cpf":
-                    const isCpfValid = value.length === 14 ? validateCPF(value) : true; // Só valida o CPF se estiver completo
+                    const isCpfValid = value.length === 14 ? validateCPF(value) : true; // Valida o CPF apenas se tiver 14 caracteres
                     setCpfValid(isCpfValid);
                     if (!value) {
-                        stateObj[name] = "Por favor, digite seu CPF.";
+                        stateObj[name] = "Por favor, digite seu CPF."; // Verifica se o CPF está vazio
                     } else if (!isCpfValid) {
-                        stateObj[name] = "CPF inválido.";
+                        stateObj[name] = "CPF inválido."; // Verifica se o CPF é válido
                     }
                     break;
 
                 case "password":
                     if (!value) {
-                        stateObj[name] = "Por favor, digite sua senha.";
+                        stateObj[name] = "Por favor, digite sua senha."; // Verifica se a senha está vazia
                     } else if (value.length < 8) {
-                        stateObj[name] = "A senha deve ter pelo menos 8 caracteres.";
+                        stateObj[name] = "A senha deve ter pelo menos 8 caracteres."; // Verifica se a senha tem pelo menos 8 caracteres
                     } else {
-                        stateObj["passwordConfirm"] = input.passwordConfirm ? "" : error.passwordConfirm;
+                        stateObj["passwordConfirm"] = input.passwordConfirm ? "" : error.passwordConfirm; // Reseta a mensagem de erro da confirmação de senha
                     }
                     break;
 
                 case "passwordConfirm":
                     if (!value) {
-                        stateObj[name] = "Por favor, confirme sua senha.";
+                        stateObj[name] = "Por favor, confirme sua senha."; // Verifica se a confirmação de senha está vazia
                     } else if (input.password && value !== input.password) {
-                        stateObj[name] = "As senhas estão diferentes, verifique!";
+                        stateObj[name] = "As senhas estão diferentes, verifique!"; // Verifica se a confirmação de senha corresponde à senha
                     }
                     break;
 
@@ -89,17 +98,28 @@ export const CreateAccount = ({ navigation }) => {
 
             return stateObj;
         });
-    }
+    };
 
+    // Função para lidar com a criação do usuário
     const handleCreateUser = () => {
         if (input.name && input.email && cpfValid && input.password !== '' && input.password === input.passwordConfirm && !Object.values(error).some(err => err !== "")) {
-            alert('Cadastro criado com sucesso');
-            navigation.navigate('login');
+            // Passa os dados como parâmetro ao navegar para a próxima tela 
+            navigation.replace("RegistrationSuccessful", { userEmail: input.email });
         } else {
             alert('Ops! Algo deu errado');
         }
-    }
+    };
 
+          // const handleCreateUser = () => {
+    //     if (input.name && input.email && cpfValid && input.password !== '' && input.password === input.passwordConfirm && !Object.values(error).some(err => err !== "")) {
+    //         alert('Cadastro criado com sucesso');
+    //         navigation.navigate('login');
+    //     } else {
+    //         alert('Ops! Algo deu errado');
+    //     }
+    // }
+
+    
     // Função de validação do CPF
     function validateCPF(cpf) {
         cpf = cpf.replace(/\D/g, ''); // Remove caracteres não numéricos
@@ -110,7 +130,7 @@ export const CreateAccount = ({ navigation }) => {
         let rest;
 
         for (let i = 1; i <= 9; i++) sum += parseInt(cpf.substring(i - 1, i)) * (11 - i);
-        
+
         rest = (sum * 10) % 11;
 
         if (rest === 10 || rest === 11) rest = 0;
@@ -120,7 +140,7 @@ export const CreateAccount = ({ navigation }) => {
         sum = 0;
 
         for (let i = 1; i <= 10; i++) sum += parseInt(cpf.substring(i - 1, i)) * (12 - i);
-        
+
         rest = (sum * 10) % 11;
 
         if (rest === 10 || rest === 11) rest = 0;
@@ -145,6 +165,21 @@ export const CreateAccount = ({ navigation }) => {
         }
     };
 
+    // Handler para validação de e-mail ao sair do campo
+    const handleEmailBlur = () => {
+        const email = input.email;
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        let errorMsg = "";
+
+        if (!email) {
+            errorMsg = "Por favor, digite seu email."; // Mensagem de erro se o campo estiver vazio
+        } else if (!emailRegex.test(email)) {
+            errorMsg = "Email inválido."; // Mensagem de erro se o email for inválido
+        }
+
+        setError(prev => ({ ...prev, email: errorMsg })); // Atualiza o estado de erro para o campo de email
+    };
+
     return (
         <Container>
             <Title>Cadastre-se</Title>
@@ -158,6 +193,7 @@ export const CreateAccount = ({ navigation }) => {
                     autoCorrect={false} 
                     value={input.name}
                     onChangeText={(value) => onInputChange('name', value)} 
+                    onBlur={() => validateInput('name', input.name)}
                 />
                 {error.name && <Label style={{ color: 'red', fontSize: 14, marginTop: 63, marginLeft: -20 }}>{error.name}</Label>}
             </Input>
@@ -170,7 +206,8 @@ export const CreateAccount = ({ navigation }) => {
                     autoCapitalize='none' 
                     autoCorrect={false} 
                     value={input.email}
-                    onChangeText={(value) => onInputChange('email', value)} 
+                    onChangeText={(value) => onInputChange('email', value)}
+                    onBlur={handleEmailBlur} // Valida ao sair do campo de email
                 />
                 {error.email && <Label style={{ color: 'red', fontSize: 14, marginTop: 63, marginLeft: -20 }}>{error.email}</Label>}
             </Input>
@@ -190,6 +227,7 @@ export const CreateAccount = ({ navigation }) => {
                         setCpfInputComplete(isComplete); // Verifica se o CPF está completo
                         setCpfValid(validateCPF(maskedCpf)); // Valida o CPF e atualiza o estado
                     }} 
+                    onBlur={() => validateInput('cpf', input.cpf)} // Valida ao sair do campo de CPF
                 />
                 {error.cpf && <Label style={{ color: 'red', fontSize: 14, marginTop: 63, marginLeft: -20 }}>{error.cpf}</Label>}
             </Input>
@@ -204,6 +242,7 @@ export const CreateAccount = ({ navigation }) => {
                     autoCorrect={false} 
                     value={input.password}
                     onChangeText={(value) => onInputChange('password', value)} 
+                    onBlur={() => validateInput('password', input.password)} // Valida ao sair do campo de senha
                 />
                 {error.password && <Label style={{ color: 'red', fontSize: 14, marginTop: 63, marginLeft: -20 }}>{error.password}</Label>}
             </Input>
@@ -218,6 +257,7 @@ export const CreateAccount = ({ navigation }) => {
                     autoCorrect={false} 
                     value={input.passwordConfirm}
                     onChangeText={(value) => onInputChange('passwordConfirm', value)} 
+                    onBlur={() => validateInput('passwordConfirm', input.passwordConfirm)} // Valida ao sair do campo de confirmação de senha
                 />
                 {error.passwordConfirm && <Label style={{ color: 'red', fontSize: 14, marginTop: 63, marginLeft: -20 }}>{error.passwordConfirm}</Label>}
             </Input>
