@@ -27,6 +27,7 @@ import { RegistrationSuccessful } from "./src/screens/RegistrationSuccessful/Reg
 import { PasswordRecover } from "./src/screens/PasswordRecover/PasswordRecover";
 import { EmailVerification } from "./src/screens/EmailVerification/EmailVerification";
 import { PasswordResetSuccessful } from "./src/screens/PasswordResetSuccessful/PasswordResetSuccessful";
+import VerificationCode from "./src/screens/VerificationCode/VerificationCode";
 
 
 const Stack = createNativeStackNavigator();
@@ -110,6 +111,14 @@ export default function App() {
           component={PasswordResetSuccessful}
           //titulo da tela
           options={{title: 'PasswordResetSuccessful'}}
+        />
+         <Stack.Screen
+          //RegistrationSuccessful
+          name='VerificationCode'
+          //componente que sera chamado
+          component={VerificationCode}
+          //titulo da tela
+          options={{title: 'VerificationCode'}}
         />
       </Stack.Navigator>
     </NavigationContainer>

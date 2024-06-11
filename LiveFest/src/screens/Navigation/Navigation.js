@@ -36,6 +36,11 @@ return(
             onPress={() => navigation.navigate
             ("PasswordResetSuccessful")}
         />
+        <Button
+            title="VerificationCode"
+            onPress={() => navigation.navigate
+            ("VerificationCode")}
+        />
         
     </View>
 

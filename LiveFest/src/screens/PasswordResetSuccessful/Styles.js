@@ -95,9 +95,9 @@ export const TextContentAccount = styled.Text`
   color: #BCBDBE;
 `;
 
-export const ContainerBrokenKey= styled.View`
+export const ContainerPadlock= styled.View`
   align-self: center;
- 
+ margin-top: 50px;
  
 `;
 
