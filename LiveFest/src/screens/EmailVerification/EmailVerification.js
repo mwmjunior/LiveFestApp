@@ -4,8 +4,18 @@ import { Button, ButtonTitle, Container, ContainerBrokenKey, ContainerSmartphone
 import Smartphone from '../../components/Icons/Smartphone';
 
 // Definição do componente de criação de conta
-export const EmailVerification= ({ navigation }) => {
-   
+export const EmailVerification= ({ navigation, route }) => {
+
+    // Obtém o email da rota
+    const { userEmail } = route.params;
+
+    // Verifica se o email foi recebido corretamente
+    console.log("Email recebido:", userEmail);
+
+    const RedirectVerificationCode = () => {
+        // Navega para a tela final passando o email
+        navigation.navigate("VerificationCode", { userEmail });
+    };
 
     return (
         <Container>
@@ -13,10 +23,10 @@ export const EmailVerification= ({ navigation }) => {
             <ContainerSmartphone>
                      <Smartphone size={250} />
             </ContainerSmartphone>
-
+            
             <Subitle>Enviamos uma verificação link para seu e-mail </Subitle>
         
-            <Button>
+            <Button onPress={RedirectVerificationCode}>
                 <ButtonTitle>Validar código </ButtonTitle>
             </Button>
 
