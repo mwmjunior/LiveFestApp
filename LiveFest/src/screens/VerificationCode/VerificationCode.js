@@ -27,11 +27,11 @@ const { userEmail } = route.params || {}; // Verifica se route.params está defi
     console.log("Email recebido:", userEmail);
     
       // Limpa o código quando a tela é desmontada ou a rota muda
-      useEffect(() => {
-        return () => {
-            setCode([]);
-        };
-    }, [navigation, route]);
+    //   useEffect(() => {
+    //     return () => {
+    //         setCode([]);
+    //     };
+    // }, [navigation, route]);
 
     return (
         <Container>

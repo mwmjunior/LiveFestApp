@@ -14,7 +14,8 @@ export const EmailVerification= ({ navigation, route }) => {
 
     const RedirectVerificationCode = () => {
         // Navega para a tela final passando o email
-        navigation.navigate("VerificationCode", { userEmail });
+        // navigation.navigate("VerificationCode", { userEmail });
+        navigation.replace("VerificationCode", { userEmail });
     };
 
     return (

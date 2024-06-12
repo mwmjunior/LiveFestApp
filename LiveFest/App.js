@@ -52,7 +52,12 @@ export default function App() {
      <StatusBar/>
      <Stack.Navigator 
       initialRouteName="SplashScreen" // Define a tela inicial do navegador de pilha.
-      screenOptions={{ headerShown: false }} // Oculta o cabeçalho padrão de todas as telas dentro do navegador de pilha.
+      screenOptions={{ headerShown: false,             // Oculta o cabeçalho padrão de todas as telas dentro do navegador de pilha.
+                       animation: 'slide_from_right', 
+                       animationTypeForReplace: 'push', 
+                        // gestureEnabled: false
+                      }} 
+      // screenOptions={{ headerShown: false, animation: 'fade', animationTypeForReplace: 'push'}} // Oculta o cabeçalho padrão de todas as telas dentro do navegador de pilha.
     >
         {/* <Stack.Screen
           name="SplashScreen"
@@ -72,6 +77,36 @@ export default function App() {
           component={Login}
           //titulo da tela
           options={{title: 'Login'}}
+        />
+          <Stack.Screen
+          //RegistrationSuccessful
+          name='PasswordReset'
+          //componente que sera chamado
+          component={PasswordReset}
+          //titulo da tela
+          options={{title: 'PasswordReset'}}
+        />
+          <Stack.Screen
+          //RegistrationSuccessful
+          name='EmailVerification'
+          //componente que sera chamado
+          component={EmailVerification}
+          //titulo da tela
+          options={{
+            title: 'EmailVerification',
+            // animation:'slide_from_right',
+          }}
+        />
+           <Stack.Screen
+          //RegistrationSuccessful
+          name='VerificationCode'
+          //componente que sera chamado
+          component={VerificationCode}
+          //titulo da tela
+          options={{
+            title: 'VerificationCode',
+            animation:'slide_from_right',
+          }}    
         />
          <Stack.Screen
           //Login
@@ -97,14 +132,7 @@ export default function App() {
           //titulo da tela
           options={{title: 'PasswordRecover'}}
         />
-         <Stack.Screen
-          //RegistrationSuccessful
-          name='EmailVerification'
-          //componente que sera chamado
-          component={EmailVerification}
-          //titulo da tela
-          options={{title: 'EmailVerification'}}
-        />
+       
          <Stack.Screen
           //RegistrationSuccessful
           name='PasswordResetSuccessful'
@@ -113,22 +141,8 @@ export default function App() {
           //titulo da tela
           options={{title: 'PasswordResetSuccessful'}}
         />
-         <Stack.Screen
-          //RegistrationSuccessful
-          name='VerificationCode'
-          //componente que sera chamado
-          component={VerificationCode}
-          //titulo da tela
-          options={{title: 'VerificationCode'}}
-        />
-         <Stack.Screen
-          //RegistrationSuccessful
-          name='PasswordReset'
-          //componente que sera chamado
-          component={PasswordReset}
-          //titulo da tela
-          options={{title: 'PasswordReset'}}
-        />
+      
+       
       </Stack.Navigator>
     </NavigationContainer>
   );

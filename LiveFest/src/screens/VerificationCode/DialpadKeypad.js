@@ -1,4 +1,4 @@
-import React from "react";
+"react";
 import { FlatList, TouchableOpacity } from "react-native";
 import { Feather } from "@expo/vector-icons";    // Importa Feather, um pacote de ícones para React Native.
 import styled from "styled-components/native";   // Importa styled-components para estilizar componentes no React Native.
@@ -82,7 +82,7 @@ const DialPadText = styled.Text`
 
 const DeleteIcon = styled(Feather).attrs({
   name: "delete",
-  color: "#D75353 ",
+  color: "#D75353",
 })`
   font-size: ${(props) => props.size}px;
 `;
