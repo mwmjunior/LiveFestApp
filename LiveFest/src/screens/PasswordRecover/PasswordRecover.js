@@ -37,3 +37,8 @@ export const PasswordRecover = ({ navigation }) => {
         </Container>
     );
 };
+
+
+
+
+
